@@ -17,7 +17,7 @@ import processing.core.PImage;
  * 
  * 2. Declare a variable for the image:
  *    PImage face;
- * 
+ * 	
  * In the setup() method:
  *   3. Load your image using the following code:
  *      waldo = loadImage("waldo.jpg");
@@ -38,11 +38,11 @@ import processing.core.PImage;
  *      playWhoohoo() method, otherwise call the playDoh() method.
  */
 public class WheresWaldo extends PApplet {
-    static final int WIDTH = 600;
-    static final int HEIGHT = 400;
+    static final int WIDTH = 1000;
+    static final int HEIGHT = 800;
 
     PImage waldo;
-
+    
     @Override
     public void settings() {
         size(WIDTH, HEIGHT);
@@ -50,12 +50,21 @@ public class WheresWaldo extends PApplet {
 
     @Override
     public void setup() {
-        
+        waldo = loadImage("waldo.jpg");
+        waldo.resize(WIDTH, HEIGHT);
+        background(waldo);
     }
 
     @Override
     public void draw() {
-        
+        println("X: " + mouseX + " Y: " + mouseY);
+        if(mousePressed) {
+        	if(mouseX>612 && mouseX<632 && mouseY>270 && mouseY<315) {
+        		playWhoohoo();
+        	}else {
+        		playDoh();
+        	}
+        }
     }
 
     static public void main(String[] args) {
